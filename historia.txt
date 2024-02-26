@@ -1,1 +1,135 @@
+### Historial de comandos utilizados para la práctica individual ###
+
+### Apartado 1
+
+# Creación del repositorio local
+git init
+
+# Creación de las carpetas pedidas
+mkdir "Proyectos"
+mkdir "Procesos"
+cd ./Proyectos/
+mkdir Prj1
+cd ..
+cd ./Procesos/
+mkdir ControlDeCambios
+cd ..
+
+### Apartado 2
+
+# La adición del documento del proceso de control de cambios se hizo desde el explorador de archivos
+
+# Creación del archivo de historia
+touch historia.txt
+
+### Apartado 3
+
+# Actualización del repositorio local
+git add .
+git commit -m "Añadido el documento de la versión inicial del proceso de control de cambios y añadido el documento historia.txt"
+
+### Apartado 4
+
+# Creación de la tag
+git tag -a R1 -m "Versión R1"
+
+# Comprobación de que la etiqueta se ha creado correctamente
+git tag
+
+### Apartado 5
+
+# Creación de la nueva rama
+git checkout -b Mejoras
+
+# Actualización de la nueva rama. El PDF se añadió desde el explorador de archivos
+git add .
+git commit -m "Añadido el PDF de mejoras a la rama"
+
+### Apartado 6
+
+# Actualización de la rama. La versión nueva del archivo se añadió desde el explorador de archivos
+git add .
+git commit -m "Añadida la versión 2 del documento del proceso de control de cambios a la rama"
+
+### Apartado 7
+
+# Volvemos a la rama principal
+git checkout master
+
+# Fundimos las ramas
+git merge Mejoras
+
+# Eliminamos la rama
+git branch -d Mejoras
+
+### Apartado 8
+
+# El PDF se borró desde el explorador de archivos
+
+### Apartado 9
+
+# Actualización del repositorio local
+git add .
+git commit -m "Borrado el PDF con las propuestas de mejora"
+
+# Etiquetamos la versión actual
+git tag -a R2 -m "Versión R2"
+
+# Comprobamos las etiquetas
+git tag
+
+### Apartado 10
+
+# Actualización del repositorio local. El archivo fue sustituido desde el explorador de archivos
+git add .
+git commit -m "Actualizado el documento de control de cambios a la versión 3"
+
+### Apartado 11
+
+# Consultamos el log para obtener el hash del último commit
+git log
+
+# Deshacemos el último commit del repositorio local
+git reset --hard 48b5f03d79435cb863adebdc8865e43caf1effee
+
+# Comprobamos que se ha desecho el commit correctamente
+git log
+
+# Actualizamos el repositorio local. Las plantillas fueron añadidas desde el explorador de archivos
+git add .
+git commit -m "Actualizado el documento del proceso de control de cambios a la versión 3 y añadidas las plantillas"
+
+# Etiquetamos la versión actual
+git tag -a R3 -m "Versión R3"
+
+# Comprobamos las etiquetas
+git tag
+
+### Apartado 12
+
+# Añadimos al repositorio local la referencia del remoto
+git remote add origin https://github.com/Louiscata/P6-EnSo-Trabajo-Individual.git
+
+# Hacemos push del repositorio local al remoto, incluyendo las tags
+git push -u origin master --tags
+
+### Apartado 13
+
+# Actualizamos el repositorio local por si ha habido algún cambio en el remoto
 git pull origin master
+
+### Apartado 14
+
+# Tras añadir el comando anterior al archivo 'historia.txt', comprobamos las diferencias entre este y el del repositorio remoto.
+git diff HEAD historia.txt
+
+# Se observa que la diferencia es la nueva línea añadida
+
+### Apartado 15
+
+# Actualizamos el repositorio local
+git add .
+git commit -m "Actualización final del repositorio con todos los cambios"
+
+# Actualizamos el repositorio remoto, incluyendo las tags
+git push -u origin master --tags
